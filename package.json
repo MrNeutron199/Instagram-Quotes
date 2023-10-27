@@ -2,8 +2,5 @@
 	"homepage": "https://Mrneutron199.github.io/Instagram-quotes",
 	"scripts": {
 		"deploy": "gh-pages -d build"
-	},
-	"dependencies": {
-		"gh-pages": "^6.0.0"
 	}
 }

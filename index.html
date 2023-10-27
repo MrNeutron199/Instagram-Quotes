@@ -4,8 +4,35 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Quotes</title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.0/axios.min.js"></script>
 	</head>
 	<body>
-		<h1>For quotes to display</h1>
+		<style>
+			img {
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+				width: 50%;
+			}
+		</style>
+		<div id="output"></div>
+		<script>
+			const url =
+				'https://graph.instagram.com/me/media?fields=caption,media_url,permalink,username&access_token=IWontGiveYouTheToken';
+			axios(url).then((response) => {
+				const data = response.data.data;
+				console.log(data);
+				data.forEach((a) => {
+					const div = document.createElement('div');
+					let u = `<div> 
+						<p>By: <b>${a.username}</p>
+						<img src=${a.media_url} class="centre">
+					</div>`;
+					div.innerHTML = u;
+					const o = document.getElementById('output');
+					o.appendChild(div);
+				});
+			});
+		</script>
 	</body>
 </html>
